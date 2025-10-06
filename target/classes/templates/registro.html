@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Sección imagen -->
+        <div class="image-section">
+            <img src="/src/main/resources/static/img/robo.png" alt="Imagen Registro" class="background-image">
+        </div>
+
+        <!-- Formulario -->
+        <div class="form-container">
+            <div class="user-type">Registro</div>
+
+            <form th:action="@{/registro}" method="post" th:object="${usuario}" style="width: 100%;">
+                <!-- Campo nombre -->
+                <div class="input-group">
+                    <label class="input-label" for="nombre">Nombre</label>
+                    <input type="text" th:field="*{nombre}" id="nombre" class="input-box" placeholder="Nombre" required>
+                </div>
+
+                <!-- Campo correo -->
+                <div class="input-group">
+                    <label class="input-label" for="email">Correo</label>
+                    <input type="email" th:field="*{email}" id="email" class="input-box" placeholder="Correo electrónico" required>
+                </div>
+
+                <!-- Campo contraseña -->
+                <div class="input-group">
+                    <label class="input-label" for="clave">Clave</label>
+                    <input type="password" th:field="*{clave}" id="clave" class="input-box" placeholder="Clave" required>
+                </div>
+
+                <!-- Botón -->
+                <button type="submit" class="login-button">Registrar</button>
+
+                <!-- Mensaje dinámico -->
+                <div th:if="${param.success}" class="success">
+                    Usuario registrado con éxito ✅
+                </div>
+            </form>
+
+            <div class="login-link">
+                ¿Ya tienes cuenta? <a th:href="@{/login}">Inicia sesión</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

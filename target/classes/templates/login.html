@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div class="main-wrapper">
+        <!-- Sección imagen -->
+        <div class="image-section">
+            <img src="/src/main/resources/static/img/robo.png" alt="Imagen Login" class="background-image">
+        </div>
+
+        <!-- Formulario -->
+        <div class="form-container">
+            <div class="user-type">Iniciar Sesión</div>
+
+            <!-- Formulario que envía a /login -->
+            <form th:action="@{/login}" method="post" style="width: 100%;">
+                <!-- Campo correo -->
+                <div class="input-group">
+                    <label class="input-label" for="email">Correo electrónico</label>
+                    <input type="email" name="email" id="email" class="input-box" placeholder="Correo electrónico" required>
+                </div>
+
+                <!-- Campo contraseña -->
+                <div class="input-group">
+                    <label class="input-label" for="password">Clave</label>
+                    <input type="password" name="password" id="password" class="input-box" placeholder="Clave" required>
+                </div>
+
+                <!-- Botón -->
+                <button type="submit" class="login-button">Entrar</button>
+
+                <!-- Mensajes dinámicos -->
+                <div th:if="${param.error}" class="error">Credenciales incorrectas ❌</div>
+                <div th:if="${param.success}" class="success">Bienvenido ✅</div>
+            </form>
+
+            <div class="forgot-password">¿Olvidaste tu contraseña?</div>
+
+            <div class="login-link">
+                ¿No tienes cuenta? <a th:href="@{/register}">Regístrate</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
